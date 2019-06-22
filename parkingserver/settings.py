@@ -122,7 +122,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIR = '/hackaton2019/parking/static/'
+STATICFILES_DIRS  = '/hackaton2019/parking/static/'
 
 MEDIA_URL = '/media/'
 
