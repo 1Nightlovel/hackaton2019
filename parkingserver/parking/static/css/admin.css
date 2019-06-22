@@ -1,0 +1,18 @@
+.mdc-text-field {
+    width: 100%;
+    margin: 5px auto;
+}
+.mdc-card{
+    padding: 30px;
+    text-align: center;
+    vertical-align: middle;
+    width: 250px;
+    height: auto;
+    margin: 30px auto ;
+    min-width: 200px;
+    overflow: hidden;
+    
+}
+#my-dialog-content2{
+    padding: 20px;
+}

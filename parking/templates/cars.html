@@ -1,0 +1,184 @@
+{% load static %}
+<script src="../static/js/jquery-3.3.1.min.js"></script> 
+<style>
+@font-face{
+    font-family: 'PATENTE';
+    src: url("../static/resources/fonts/FE.TTF") format("truetype");
+}
+.patente{
+    direction: ltr;
+    position: relative;
+    width: 90%;
+    padding-top: 30%;
+    margin: 4% 5%;
+    background: rgb(201, 201, 201);
+    box-shadow:6px 10px 3px rgba(0, 0, 0, 0.651);
+}
+.patente:hover{
+    transform: scale(1.02);
+    box-shadow:8px 12px 5px rgba(0, 0, 0, 0.651);
+}
+.patente:active{
+    transform: scale(0.98);
+    box-shadow:3px 5px 2px rgba(0, 0, 0, 0.651);
+}
+
+.patente .pdata{
+    position: absolute;
+    top: 2%;
+    left: 0;
+    height: 96%;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: 'PATENTE';
+    text-transform: uppercase;
+    border-color: black;
+    border-style: solid;
+    transform: scale(0.98);
+    
+}
+.patente .pdata .d1{
+    position: absolute;
+    width: 100%;
+    text-align: center;
+}
+.patente .pdata .d2{
+    position: absolute;
+    bottom: 10%;
+    width: 100%;
+    text-align: center;
+}
+.patente .pdata input[type="text"]{
+    font-family: 'PATENTE';
+    
+    text-transform: uppercase;
+    background-color: rgba(240, 248, 255, 0);
+    border-style: none;
+}
+</style>
+
+<div class="patente">
+    <div class="pdata">
+        <span class="d1">zx dr 23</span>
+        <span class="d2">chile</span>
+    </div>
+</div>
+<div class="patente">
+    <div class="pdata">
+        <span class="d1">fg de 45</span>
+        <span class="d2">chile</span>
+    </div>
+</div>
+<div class="patente">
+    <div class="pdata">
+        <span class="d1">kg oi 78</span>
+        <span class="d2">chile</span>
+    </div>
+</div>
+<div class="patente">
+    <div class="pdata">
+        <span class="d1">ck gt 78</span>
+        <span class="d2">chile</span>
+    </div>
+</div>
+<div class="patente">
+    <div class="pdata">
+        <span class="d1">ww wk 45</span>
+        <span class="d2">chile</span>
+    </div>
+</div>
+<div class="patente">
+    <div class="pdata">
+        <span class="d1">zx dr 23</span>
+        <span class="d2">chile</span>
+    </div>
+</div>
+<div class="patente">
+    <div class="pdata">
+        <span class="d1">fg de 45</span>
+        <span class="d2">chile</span>
+    </div>
+</div>
+<div class="patente">
+    <div class="pdata">
+        <span class="d1">kg oi 78</span>
+        <span class="d2">chile</span>
+    </div>
+</div>
+<div class="patente">
+    <div class="pdata">
+        <span class="d1">ck gt 78</span>
+        <span class="d2">chile</span>
+    </div>
+</div>
+<div class="patente">
+    <div class="pdata">
+        <span class="d1">ww wk 45</span>
+        <span class="d2">chile</span>
+    </div>
+</div>
+<div class="patente">
+    <div class="pdata">
+        <span class="d1">zx dr 23</span>
+        <span class="d2">chile</span>
+    </div>
+</div>
+<div class="patente">
+    <div class="pdata">
+        <span class="d1">fg de 45</span>
+        <span class="d2">chile</span>
+    </div>
+</div>
+<div class="patente">
+    <div class="pdata">
+        <span class="d1">kg oi 78</span>
+        <span class="d2">chile</span>
+    </div>
+</div>
+<div class="patente">
+    <div class="pdata">
+        <span class="d1">ck gt 78</span>
+        <span class="d2">chile</span>
+    </div>
+</div>
+<div class="patente">
+    <div class="pdata">
+        <span class="d1">ww wk 45</span>
+        <span class="d2">chile</span>
+    </div>
+</div>
+<div class="patente">
+    <div class="pdata">
+        <input type="text" spellcheck="false" name="" class="d1" id="">
+        <span class="d2">chile</span>
+    </div>
+</div>
+
+<script>
+        function psizes() {
+            console.log('entró');
+            $('.patente').css("font-size",$('.patente').width()/20+"px");
+            $('.patente').css("patente",$('.patente').width()/40+"px");
+            $('.patente').css("border-radius",$('.patente').width()/25+"px");
+            $('.pdata').css("border-radius",$('.patente').width()/30+"px");
+            $('.pdata').css("border-width",$('.patente').width()/70+"px");
+
+            var size = $('.patente').width()/150;
+            var s = size+"px";
+            var d = size*2+"px";
+            var d2 = size/2+"px";
+            var s2 = size/1.5+"px";
+
+
+            $('.pdata').css("text-shadow",s+' '+s+' '+ d+' rgba(0, 0, 0,0.6), -'+s+' -'+s+' '+d2+' #fff');
+            $('.pdata').css("box-shadow",s+' '+s+' '+ d+' rgba(0, 0, 0,0.6), -'+s+' -'+s+' '+d2+' #fff');
+            $('.pdata input[type="text"]').css("text-shadow",s+' '+s+' '+ d+' rgba(0, 0, 0,0.6), -'+s+' -'+s+' '+d2+' #fff');
+            $('.d2').css("text-shadow",s2+' '+s2+' '+ d+' rgba(0, 0, 0,0.6), -'+s2+' -'+s2+' '+d2+' #fff');
+            
+            $('.d1').css("font-size",$('.patente').width()/5.5+"px");
+            $('.d2').css("font-size",$('.patente').width()/30+"px");
+            console.log('work');
+        };
+        psizes();
+        window.onresize = function(){psizes()};
+        </script>

@@ -1,0 +1,42 @@
+@import "@material/textfield/mdc-text-field"; 
+@import "@material/button/mdc-button";
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    width: auto;
+    margin: 20px;
+  }
+  
+  .button-container button {
+    margin: 3px;
+  }
+
+  .username,
+.password {
+  width: 100%;
+  margin: 20px auto;
+}
+
+.inputcontainer{
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    vertical-align: middle;
+    width: 400px;
+    margin: 30px auto ;
+    min-width: 200px;
+    background-color: white;
+    
+}
+#imagelogo{
+  height: 150px;
+  width: 150px;
+  margin: auto;
+  display: inline-block;
+}
+@media (max-width: 450px) {
+    .inputcontainer{
+      width: auto;
+    }
+  }

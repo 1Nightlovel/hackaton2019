@@ -1,0 +1,206 @@
+body{
+    background: url("/static/img/background.jpg");
+    background-position-x: center;
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    width: auto;
+    margin: 20px;
+  }
+  
+  .button-container button {
+    margin: 3px;
+  }
+
+.mdc-text-field {
+  width: 100%;
+  margin: 20px auto;
+}
+.mdc-notched-outline{
+  border-bottom-right-radius: 40px;
+  border-top-left-radius: 40px;
+}
+
+.mdc-card{
+    padding: 30px;
+    text-align: center;
+    vertical-align: middle;
+    width: 400px;
+    height: 400px;
+    margin: 30px auto ;
+    min-width: 200px;
+    overflow: hidden;
+    
+}
+.extend{
+  height: 700px;
+} 
+
+#imagelogo{
+  height: 150px;
+  width: 150px;
+  margin: auto;
+  display: inline-block;
+}
+@media (max-width: 450px) {
+    .inputcontainer{
+      width: auto;
+    }
+  }
+
+.error{
+  position: absolute;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.8rem;
+    color: #b00020;
+    width: auto;
+    height: auto;
+    text-align: right;
+    top: 55px;
+    right: 10px;
+  }
+
+h3{
+  font-family: 'Roboto', sans-serif;
+}
+h2{
+  font-family: 'Roboto', sans-serif;
+}
+a{
+  font-family: 'Roboto', sans-serif;
+}
+.step1{
+  top:100px;
+}
+
+.step2{
+  top:300px;
+}
+
+.step3{
+  top:500px;
+}
+
+.unready{
+  width: 100px;
+  height: 100px;
+  min-width: 100px;
+  border-radius: 50px;
+  transition: 1s;
+  position: absolute;
+  left:calc(100vw - 200px);
+}
+
+.show{
+  position: absolute;
+  top: 10vh;
+  left: calc(50vw - 200px);
+  transition: 1s;
+}
+
+.ready{
+  width: 100px;
+  height: 100px;
+  min-width: 100px;
+  border-radius: 50px;
+  transition: 1s;
+  position: absolute;
+  left: 100px;
+}
+.ready img{
+  display: none;
+}
+.ready div{
+  display: none;
+}
+.unready img{
+  display: none;
+}
+.unready div{
+  display: none;
+}
+
+.check{
+  opacity: 0;
+  display: none;
+  position: absolute;
+  top: 0;
+  left:0;
+}
+
+.show .uncheck{
+  opacity: 90;
+  display: unset;
+  position: absolute;
+  height: 40px;
+  top: 2px;
+  left: 2px;
+}
+
+.uncheck{
+  opacity: 0;
+  display: none;
+  position: absolute;
+  top: 0;
+  left:0;
+}
+
+.ready .check{
+  display:unset;
+  width: 100%;
+  height: 100%;
+  opacity: 100;
+  transition: 2s;
+  
+}
+
+.unready .uncheck{
+  display:unset;
+  width: 100%;
+  height: 100%;
+  opacity: 100;
+  transition: 2s;
+  
+}
+
+.lock{
+  filter: grayscale(100%);
+}
+
+.relock{
+
+}
+
+#telefono{
+
+  width: 80%;
+}
+#chilean{
+  width:18%;
+}
+
+.codeinput{
+  width: 10%;
+  margin-left: 10px;
+  margin-right: 10px;
+  height: 55px;
+  text-align: center;
+  font-size: 50px;
+  border-right: none;
+  border-left: none;
+  border-top: none;
+  border-bottom-style: solid;
+  border-width: 3px;
+  border-color: var(--mdc-theme-primary);
+}
+.codeinputcontainer{
+  width: 100%;
+}
+.actionlabel{
+  cursor: pointer;
+}
+.actionlabel:hover{
+  color: var(--mdc-theme-primary);
+}

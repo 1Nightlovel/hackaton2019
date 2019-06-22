@@ -1,0 +1,391 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="{{maincolor}}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.png' %}"/>
+    <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="http://js.api.here.com/v3/3.0/mapsjs-core.js" type="text/javascript" charset="utf-8"></script>
+    <script src="http://js.api.here.com/v3/3.0/mapsjs-service.js" type="text/javascript" charset="utf-8"></script>
+    <script src="http://js.api.here.com/v3/3.0/mapsjs-mapevents.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" href="{% static "css/index.css" %}">
+    <link rel="stylesheet" href="{% static "css/color.css" %}">
+    {% if administrator%}
+    <link rel="stylesheet" href="{% static "css/admin.css" %}">
+    {% endif %}
+    <title>SPATIUM</title>
+</head>
+<body>
+  <script>
+    const lastlat = {{lastlat}};
+    const lastlng = {{lastlng}};
+  </script>
+
+  <header class="mdc-top-app-bar">
+    <div class="mdc-top-app-bar__row">
+      <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+        <button class="mdc-top-app-bar__navigation-icon material-icons">menu</button>
+        <span class="mdc-top-app-bar__title">SPATIUM</span>
+      </section>
+      <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
+        <a href="#" onclick="openCardsPanel()" class="material-icons mdc-top-app-bar__action-item" aria-label="My cards" alt="Cards">credit_card</a>
+        <a href="#" onclick="openCarsPanel()" class="material-icons mdc-top-app-bar__action-item" aria-label="My cards" alt="Cards">directions_car</a>
+        <a href="#" class="material-icons mdc-top-app-bar__action-item" aria-label="Ubicacion" alt="Ubicacion">gps_fixed</a>
+        {% if administrator%}
+        <a href="#" onclick="openAdminPanel()" class="material-icons mdc-top-app-bar__action-item" aria-label="Configuración" alt="Configuración">settings</a>
+        <a href="#" onclick="openAdminAddPanel()" class="material-icons mdc-top-app-bar__action-item" aria-label="Configuración" alt="Configuración">add_location</a>
+        {% endif %}
+        <a href="#" class="material-icons mdc-top-app-bar__action-item" aria-label="Usuario" alt="Usuario">color_lens</a>
+        <a href="#" class="material-icons mdc-top-app-bar__action-item" aria-label="Usuario" alt="Usuario">account_circle</a>
+      </section>
+    </div>
+  </header>
+      <main class="mdc-toolbar-fixed-adjust">
+        <p class="demo-paragraph">
+          
+        </p>
+      </main>
+  
+
+      
+        <aside class="mdc-drawer mdc-drawer--dismissible">
+            <div class="mdc-drawer__header">
+                <h3 class="mdc-drawer__title">SPATIUM</h3>
+                <h6 class="mdc-drawer__subtitle">APP estacionamento</h6>
+                <img class="userimage" src="/media/{{userimage}}" alt="">
+            </div>
+        
+          <div class="mdc-drawer__content">
+              <hr class="mdc-list-divider">
+              {% if user.is_authenticated %}
+              <a class="mdc-list-item demo-drawer-list-item" href="#">
+                  <i class="material-icons mdc-list-item__graphic" aria-hidden="true">account_circle</i>Usuario: {{user.user_comp_data.username2}}
+              </a>
+              {% endif %}
+              {% if user.is_authenticated %}
+              <a class="mdc-list-item demo-drawer-list-item" href="{% url "cerrar_sesion" %}">
+                  <i class="material-icons mdc-list-item__graphic" aria-hidden="true">close</i>Cerrar sesión
+              </a>
+              {% else %}
+              <a class="mdc-list-item demo-drawer-list-item" href="{% url "login" %}">
+                  <i class="material-icons mdc-list-item__graphic" aria-hidden="true">chevron_right</i>Iniciar sesión
+              </a>
+              <a class="mdc-list-item demo-drawer-list-item" href="{% url "register" %}">
+                  <i class="material-icons mdc-list-item__graphic" aria-hidden="true">person_add</i>Registrate
+              </a>
+             {% endif %}
+              
+                <hr class="mdc-list-divider">
+                
+            <nav class="mdc-list">
+              
+              <a class="mdc-list-item demo-drawer-list-item" href="#">
+                  <i class="material-icons mdc-list-item__graphic" aria-hidden="true">local_parking</i>Estacionamiento
+              </a>
+              <div id="icon-with-text-demo" class="mdc-list">
+                  <a class="mdc-list-item demo-drawer-list-item" href="#">
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">directions</i>indicaciones
+                  </a>
+              </div>
+             
+            </nav>
+            <hr class="mdc-list-divider">
+          </div>
+        </aside>
+      
+      
+      <div class="mdc-snackbar" id="snackbartest">
+        <div class="mdc-snackbar__surface">
+          <div class="mdc-snackbar__label"
+               role="status"
+               aria-live="polite">
+            Esto es una web de prueba.
+          </div>
+          <div class="mdc-snackbar__actions">
+            <button type="button" class="mdc-button mdc-snackbar__action">Ok</button>
+          </div>
+        </div>
+      </div>
+
+      <aside class="mdc-drawer mdc-drawer--dismissible" id="contentdrawer" dir="rtl">
+        <div class="mdc-drawer__content" id="secondarycontent">
+          <nav class="mdc-list">
+            <a class="mdc-list-item mdc-list-item--activated" href="#" aria-current="page">
+              <i class="material-icons mdc-list-item__graphic" aria-hidden="true">inbox</i>
+              <span class="mdc-list-item__text" id="selectedtitle">Inbox</span>
+            </a>
+            <a class="mdc-list-item" href="#">
+              <i class="material-icons mdc-list-item__graphic" aria-hidden="true">send</i>
+              <span class="mdc-list-item__text">Outgoing</span>
+            </a>
+            <a class="mdc-list-item" href="#">
+              <i class="material-icons mdc-list-item__graphic" aria-hidden="true">drafts</i>
+              <span class="mdc-list-item__text">Drafts</span>
+            </a>
+          </nav>
+        </div>
+      </aside>
+
+      <div id="map"></div>
+
+      <button class="mdc-fab app-fab--absolute" onclick="locateme()" aria-label="Favorite">
+        <span class="mdc-fab__icon material-icons">room</span>
+      </button>
+
+    {% if administrator%}
+    <div class="mdc-dialog"
+        id="dialogadmin"
+      role="alertdialog"
+      aria-modal="true"
+      aria-labelledby="my-dialog-title"
+      aria-describedby="my-dialog-content">
+    <div class="mdc-dialog__container">
+      <div class="mdc-dialog__surface">
+        <!-- Title cannot contain leading whitespace due to mdc-typography-baseline-top() -->
+        <h2 class="mdc-dialog__title" id="my-dialog-title"><!--
+      -->Cambiar modo de visualización<!--
+    --></h2>
+        <div class="mdc-dialog__content" id="my-dialog-content">
+          <ul class="mdc-list">
+
+            <li class="mdc-list-item" tabindex="0">
+              <span class="mdc-list-item__graphic">
+                <div class="mdc-radio">
+                  <input class="mdc-radio__native-control"
+                        type="radio"
+                        id="test-dialog-baseline-confirmation-radio-1"
+                        name="test-dialog-baseline-confirmation-radio-group"
+                        checked>
+                  <div class="mdc-radio__background">
+                    <div class="mdc-radio__outer-circle"></div>
+                    <div class="mdc-radio__inner-circle"></div>
+                  </div>
+                </div>
+              </span>
+              <label id="test-dialog-baseline-confirmation-radio-1-label"
+                    for="test-dialog-baseline-confirmation-radio-1"
+                    class="mdc-list-item__text">Dentro del radio</label>
+            </li>
+
+            <li class="mdc-list-item" tabindex="0">
+              <span class="mdc-list-item__graphic">
+                <div class="mdc-radio">
+                  <input class="mdc-radio__native-control"
+                        type="radio"
+                        id="test-dialog-baseline-confirmation-radio-1"
+                        name="test-dialog-baseline-confirmation-radio-group"
+                        checked>
+                  <div class="mdc-radio__background">
+                    <div class="mdc-radio__outer-circle"></div>
+                    <div class="mdc-radio__inner-circle"></div>
+                  </div>
+                </div>
+              </span>
+              <label id="test-dialog-baseline-confirmation-radio-1-label"
+                    for="test-dialog-baseline-confirmation-radio-1"
+                    class="mdc-list-item__text">Disponibles</label>
+            </li>
+
+            <li class="mdc-list-item" tabindex="0">
+              <span class="mdc-list-item__graphic">
+                <div class="mdc-radio">
+                  <input class="mdc-radio__native-control"
+                        type="radio"
+                        id="test-dialog-baseline-confirmation-radio-1"
+                        name="test-dialog-baseline-confirmation-radio-group"
+                        checked>
+                  <div class="mdc-radio__background">
+                    <div class="mdc-radio__outer-circle"></div>
+                    <div class="mdc-radio__inner-circle"></div>
+                  </div>
+                </div>
+              </span>
+              <label id="test-dialog-baseline-confirmation-radio-1-label"
+                    for="test-dialog-baseline-confirmation-radio-1"
+                    class="mdc-list-item__text">No disponibles</label>
+            </li>
+
+            <li class="mdc-list-item" tabindex="0">
+              <span class="mdc-list-item__graphic">
+                <div class="mdc-radio">
+                  <input class="mdc-radio__native-control"
+                        type="radio"
+                        id="test-dialog-baseline-confirmation-radio-1"
+                        name="test-dialog-baseline-confirmation-radio-group"
+                        checked>
+                  <div class="mdc-radio__background">
+                    <div class="mdc-radio__outer-circle"></div>
+                    <div class="mdc-radio__inner-circle"></div>
+                  </div>
+                </div>
+              </span>
+              <label id="test-dialog-baseline-confirmation-radio-1-label"
+                    for="test-dialog-baseline-confirmation-radio-1"
+                    class="mdc-list-item__text">Todos</label>
+            </li>
+
+          </ul>
+        </div>
+        <footer class="mdc-dialog__actions">
+          <button type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="close">
+            <span class="mdc-button__label">Cancelar</span>
+          </button>
+          <button type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="accept">
+            <span class="mdc-button__label">OK</span>
+          </button>
+        </footer>
+      </div>
+    </div>
+    <div class="mdc-dialog__scrim"></div>
+  </div>
+
+  <div class="mdc-dialog"
+      id="dialogadd"
+     role="alertdialog"
+     aria-modal="true"
+     aria-labelledby="my-dialog-title"
+     aria-describedby="my-dialog-content">
+  <div class="mdc-dialog__container">
+    <div class="mdc-dialog__surface">
+      <!-- Title cannot contain leading whitespace due to mdc-typography-baseline-top() -->
+      <h2 class="mdc-dialog__title" id="my-dialog-title"><!--
+     -->Agregar estacionamiento en el lugar seleccionado<!--
+   --></h2>
+      <div class="mdc-dialog__content" id="my-dialog-content2">
+        <div class="mdc-text-field mdc-text-field--outlined" id="tftitle">
+          <input type="text" class="mdc-text-field__input" name="title" required id="title" >
+          <div class="mdc-notched-outline">
+            <div class="mdc-notched-outline__leading"></div>
+            <div class="mdc-notched-outline__notch">
+              <label for="tf-outlined" class="mdc-floating-label">Titulo</label>
+            </div>
+            <div class="mdc-notched-outline__trailing"></div>
+          </div>
+        </div>
+
+        <div class="mdc-text-field mdc-text-field--outlined" id="tfcomuna">
+          <input type="text" class="mdc-text-field__input" name="comuna" required id="comuna">
+          <div class="mdc-notched-outline">
+            <div class="mdc-notched-outline__leading"></div>
+            <div class="mdc-notched-outline__notch">
+              <label for="tf-outlined" class="mdc-floating-label" id="tflabelcomuna">Comuna</label>
+            </div>
+            <div class="mdc-notched-outline__trailing"></div>
+          </div>
+        </div>
+
+        <div class="mdc-text-field mdc-text-field--outlined" id="tfcalle">
+          <input type="text" class="mdc-text-field__input" name="calle" required id="calle">
+          <div class="mdc-notched-outline">
+            <div class="mdc-notched-outline__leading"></div>
+            <div class="mdc-notched-outline__notch">
+              <label for="tf-outlined" class="mdc-floating-label" id="tflabelcalle">Calle</label>
+            </div>
+            <div class="mdc-notched-outline__trailing"></div>
+          </div>
+        </div>
+
+        <div class="mdc-text-field mdc-text-field--outlined" id="tfnumero">
+          <input type="text" class="mdc-text-field__input" name="numero" required  id="numero">
+          <div class="mdc-notched-outline">
+            <div class="mdc-notched-outline__leading"></div>
+            <div class="mdc-notched-outline__notch">
+              <label for="tf-outlined" class="mdc-floating-label" id="tflabelnumero">Numero</label>
+            </div>
+            <div class="mdc-notched-outline__trailing"></div>
+          </div>
+        </div>
+
+        <div class="mdc-text-field mdc-text-field--outlined" id="tfprecio">
+          <input type="text" class="mdc-text-field__input" name="precio" required id="precio">
+          <div class="mdc-notched-outline">
+            <div class="mdc-notched-outline__leading"></div>
+            <div class="mdc-notched-outline__notch">
+              <label for="tf-outlined" class="mdc-floating-label">Precio</label>
+            </div>
+            <div class="mdc-notched-outline__trailing"></div>
+          </div>
+        </div>
+
+        <div class="mdc-text-field mdc-text-field--outlined" id="tfdescripcion">
+          <input type="text" class="mdc-text-field__input" name="descripcion" required id="descripcion">
+          <div class="mdc-notched-outline">
+            <div class="mdc-notched-outline__leading"></div>
+            <div class="mdc-notched-outline__notch">
+              <label for="tf-outlined" class="mdc-floating-label">Descripción</label>
+            </div>
+            <div class="mdc-notched-outline__trailing"></div>
+          </div>
+        </div>
+      </div>
+      <footer class="mdc-dialog__actions">
+        <button type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="close">
+          <span class="mdc-button__label">Cancelar</span>
+        </button>
+        <button type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="accept" onclick="adminAddParking()">
+          <span class="mdc-button__label">OK</span>
+        </button>
+      </footer>
+    </div>
+  </div>
+  <div class="mdc-dialog__scrim"></div>
+</div>
+      
+  <div class="mdc-menu mdc-menu-surface" tabindex="-1">
+    <ul class="mdc-list" role="menu" aria-hidden="true" aria-orientation="vertical">
+      <li class="mdc-list-item" role="menuitem">
+        <span class="mdc-list-item__text">A Menu Item</span>
+      </li>
+      <li class="mdc-list-item" role="menuitem">
+        <span class="mdc-list-item__text">Another Menu Item</span>
+      </li>
+    </ul>
+  </div>
+
+
+    {% endif %}
+
+    <div class="mdc-dialog"
+          id="lockconfirm"
+          role="alertdialog"
+          aria-modal="true"
+          aria-labelledby="my-dialog-title"
+          aria-describedby="my-dialog-content">
+        <div class="mdc-dialog__container">
+          <div class="mdc-dialog__surface">
+            <!-- Title cannot contain leading whitespace due to mdc-typography-baseline-top() -->
+            <h2 class="mdc-dialog__title" id="my-dialog-title"><!--
+          -->Bloqueo estacionamento<!--
+        --></h2>
+            <div class="mdc-dialog__content" id="lockquestion">
+            </div>
+            <footer class="mdc-dialog__actions">
+              <button type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="no">
+                <span class="mdc-button__label">Cancelar</span>
+              </button>
+              <button type="button" class="mdc-button mdc-dialog__button" onclick="LCKcontinue()" data-mdc-dialog-action="yes">
+                <span class="mdc-button__label">Continuar</span>
+              </button>
+            </footer>
+          </div>
+        </div>
+        <div class="mdc-dialog__scrim"></div>
+      </div>
+      
+    
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.2.0/build/ol.js"></script>
+    <script src="{% static "js/jquery-3.3.1.min.js" %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/1.3.4/chroma.min.js"></script>
+    <script src="{% static "js/index.js" %}?1"></script>
+    <script src="{% static "js/map.js" %}?1"></script>
+    <script src="{% static "js/color.js" %}?1"></script>
+    {% if administrator%}
+    <script src="{% static "js/admin.js" %}?1"></script>
+    {% endif %}
+</body>
+</html>

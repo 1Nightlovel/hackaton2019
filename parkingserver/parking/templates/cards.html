@@ -1,0 +1,288 @@
+<style>
+    @font-face{
+    font-family: 'credit-card';
+    src: url("../static/resources/fonts/CREDC___.ttf") format("truetype");
+}
+.mastercard{
+    color: rgba(101, 164, 233, 0.863);
+    background-color: #13457C;
+}
+.mastercard .vendor{
+    background-image: url("../static/resources/vendors/svg/2.svg");
+}
+
+.visa{
+    color: rgba(106, 167, 233, 0.863);
+    background-color: #3957A7;
+}
+.visa .vendor{
+    background-image: url("../static/resources/vendors/svg/1.svg");
+}
+
+.american{
+    color: rgba(101, 169, 241, 0.863);
+    background-color: #0073A3;
+}
+.american .vendor{
+    background-image: url("../static/resources/vendors/svg/22.svg");
+}
+
+.discover{
+    color: rgba(212, 211, 211, 0.863);
+    background: linear-gradient(to right ,rgb(107, 107, 107), rgb(184, 184, 184),rgb(109, 109, 109));
+}
+.discover .vendor{
+    background-image: url("../static/resources/vendors/svg/14.svg");
+}
+
+.diners{
+    color: rgba(181, 181, 182, 0.863);
+    background: linear-gradient(rgb(158, 157, 157), rgb(184, 184, 184),rgb(161, 161, 161));
+}
+.diners .vendor{
+    background-image: url("../static/resources/vendors/svg/10.svg");
+}
+
+.JCB{
+    color: rgba(181, 181, 182, 0.863);
+    background: linear-gradient(to right, rgb(216, 184, 97), rgb(184, 184, 184),rgb(189, 165, 100));
+}
+.JCB .vendor{
+    background-image: url("../static/resources/vendors/svg/16.svg");
+}
+
+.visaElectron{
+    color: rgba(90, 159, 207, 0.824);
+    background-color: #045EA0;
+}
+.visaElectron .vendor{
+    background-image: url("../static/resources/vendors/svg/7.svg");
+}
+
+.creditcard{
+    direction: ltr;
+    position: relative;
+    font-family: 'credit-card';
+    text-transform: uppercase;
+    font-size: 30px;
+    text-shadow: 1px 2px 4px rgba(0, 0, 0,0.5), -1px -2px 1px #fff;
+    text-align: center;
+    margin: 5%;
+    width: 90%;
+    height: 0;
+    padding-top: 57%;
+    box-shadow:6px 10px 3px rgba(0, 0, 0, 0.651);
+}
+.creditcard img{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.creditcard .cardnumber{
+    direction: ltr;
+    position: absolute;
+    top: 57%;
+    left: 0;
+    width: 100%;
+}
+.creditcard .cardname{
+    position: absolute;
+    bottom: 2%;
+    left: 0;
+    width: 72%;
+}
+.creditcard .carddate{
+    position: absolute;
+    bottom: 18%;
+    left: 42%;
+    width: 20%;
+    transform: scale(0.65);
+}
+.creditcard .vendor{
+    position: absolute;
+    bottom: 5.8%;
+    right: 3.5%;
+    width: 24.6%;
+    height: 18%;
+    background-size: cover;
+    background-position-y: center;
+}
+.creditcard:hover{
+    transform: scale(1.01);
+    box-shadow:9px 15px 9px rgba(0, 0, 0, 0.651);
+}
+.creditcard:active{
+    transform: scale(0.99);
+    box-shadow:2px 2px 2px rgba(0, 0, 0, 0.651);
+}
+</style>
+
+<div class="creditcard mastercard">
+    <img src="static/resources/tarjeta.svg" alt="">
+    <div class="cardnumber">
+            1234 5678 9012 3456
+    </div>
+    <div class="cardname">
+        nombre apellido
+    </div>
+    <div class="carddate">
+        05/12
+    </div>
+    <div class="vendor">
+
+    </div>
+</div>
+
+<div class="creditcard visa">
+    <img src="static/resources/tarjeta.svg" alt="">
+    <div class="cardnumber">
+            1234 5678 9012 3456
+    </div>
+    <div class="cardname">
+        nombre apellido
+    </div>
+    <div class="carddate">
+        05/12
+    </div>
+    <div class="vendor">
+
+    </div>
+</div>
+
+<div class="creditcard american">
+    <img src="static/resources/tarjeta.svg" alt="">
+    <div class="cardnumber">
+            1234 5678 9012 3456
+    </div>
+    <div class="cardname">
+        nombre apellido
+    </div>
+    <div class="carddate">
+        05/12
+    </div>
+    <div class="vendor">
+
+    </div>
+</div>
+
+<div class="creditcard discover">
+    <img src="static/resources/tarjeta.svg" alt="">
+    <div class="cardnumber">
+            1234 5678 9012 3456
+    </div>
+    <div class="cardname">
+        nombre apellido
+    </div>
+    <div class="carddate">
+        05/12
+    </div>
+    <div class="vendor">
+
+    </div>
+</div>
+
+<div class="creditcard diners">
+    <img src="static/resources/tarjeta.svg" alt="">
+    <div class="cardnumber">
+            1234 5678 9012 3456
+    </div>
+    <div class="cardname">
+        nombre apellido
+    </div>
+    <div class="carddate">
+        05/12
+    </div>
+    <div class="vendor">
+
+    </div>
+</div>
+
+<div class="creditcard JCB">
+    <img src="static/resources/tarjeta.svg" alt="">
+    <div class="cardnumber">
+            1234 5678 9012 3456
+    </div>
+    <div class="cardname">
+        nombre apellido
+    </div>
+    <div class="carddate">
+        05/12
+    </div>
+    <div class="vendor">
+
+    </div>
+</div>
+
+<div class="creditcard visaElectron">
+    <img src="static/resources/tarjeta.svg" alt="">
+    <div class="cardnumber">
+            1234 5678 9012 3456
+    </div>
+    <div class="cardname">
+        nombre apellido
+    </div>
+    <div class="carddate">
+        05/12
+    </div>
+    <div class="vendor">
+
+    </div>
+</div>
+
+<script>
+function loadcardsstyle() {
+    $('.creditcard').css("font-size",$('.creditcard').width()/20+"px");
+    $('.creditcard').css("word-spacing",$('.creditcard').width()/40+"px");
+    $('.creditcard').css("border-radius",$('.creditcard').width()/25+"px");
+};
+
+loadcardsstyle();
+
+window.onresize = function(){loadcardsstyle()};
+
+function GetCardType(number)
+{
+    // visa
+    var re = new RegExp("^4");
+    if (number.match(re) != null)
+        return "visa";
+
+    // Mastercard 
+    // Updated for Mastercard 2017 BINs expansion
+     if (/^(5[1-5][0-9]{14}|2(22[1-9][0-9]{12}|2[3-9][0-9]{13}|[3-6][0-9]{14}|7[0-1][0-9]{13}|720[0-9]{12}))$/.test(number)) 
+        return "mastercard";
+
+    // AMEX
+    re = new RegExp("^3[47]");
+    if (number.match(re) != null)
+        return "american";
+
+    // Discover
+    re = new RegExp("^(6011|622(12[6-9]|1[3-9][0-9]|[2-8][0-9]{2}|9[0-1][0-9]|92[0-5]|64[4-9])|65)");
+    if (number.match(re) != null)
+        return "discover";
+
+    // Diners
+    re = new RegExp("^36");
+    if (number.match(re) != null)
+        return "diners";
+
+    // Diners - Carte Blanche
+    re = new RegExp("^30[0-5]");
+    if (number.match(re) != null)
+        return "diners";
+
+    // JCB
+    re = new RegExp("^35(2[89]|[3-8][0-9])");
+    if (number.match(re) != null)
+        return "JCB";
+
+    // Visa Electron
+    re = new RegExp("^(4026|417500|4508|4844|491(3|7))");
+    if (number.match(re) != null)
+        return "visaElectron";
+
+    return "";
+}
+</script>

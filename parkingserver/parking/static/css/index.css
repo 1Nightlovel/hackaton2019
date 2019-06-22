@@ -1,0 +1,76 @@
+@font-face{
+    font-family: 'PATENTE';
+    src: url("/static/resources/fonts/FE.TTF") format("truetype");
+}
+
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+.material-icons.md-120 { font-size: 120px; }
+
+.mdc-top-app-bar__title{
+	font-family: 'PATENTE';
+}
+
+.userimage{
+	border-style: solid;
+	border-width: 2px;
+	border-radius: 50%;
+	height: 150px;
+	margin: 30px 30px 0px 30px;
+}
+.icouser{
+    text-align: center;
+}
+
+body{
+	overflow: hidden;
+}
+
+.mdc-drawer{
+	top: 64px;
+	height: calc(100% - 64px);
+}
+@media (max-width: 599px){
+	.mdc-drawer{
+		top: 56px;
+		height: calc(100% - 56px);
+	}
+}
+
+#map {
+	position: absolute;
+	top: 0%;
+	left: 0%;
+	width: 100%;
+	height: 100%;
+	background: gray;
+	z-index: -1;
+}
+
+
+.mdc-snackbar{
+	z-index: 0;
+}
+
+.mdc-top-app-bar{
+	top: 0px;
+	left: 0px;
+}
+.app-fab--absolute {
+	position: fixed;
+	bottom: 1rem;
+	right: 1rem;
+  }
+  
+  @media(min-width: 1024px) {
+	 .app-fab--absolute {
+	  bottom: 1.5rem;
+		right: 1.5rem;
+	}
+	}
+
+#contentdrawer{
+	width: 500px;
+}

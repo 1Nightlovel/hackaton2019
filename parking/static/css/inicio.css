@@ -1,0 +1,24 @@
+@import "@material/top-app-bar/mdc-top-app-bar";
+@import "@material/layout-grid/mdc-layout-grid";
+
+
+
+.icon-block {
+    padding: 0 15px;
+  }
+  .icon-block .material-icons {
+      font-size: inherit;
+  }
+
+
+
+.new{
+    background-color: #6200ee
+}
+
+
+#logo{
+    height: 150px;
+    width: 150px;
+    margin: auto;
+}
