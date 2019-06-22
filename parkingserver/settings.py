@@ -123,7 +123,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS  = [BASE_DIR+"/assets", ]
-STATIC_ROOT = '/home/ubuntu/static'
+STATIC_ROOT = '/home/ubuntu/hackaton2019/assets/static'
 
 MEDIA_URL = '/media/'
 
