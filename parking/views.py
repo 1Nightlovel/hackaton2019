@@ -13,6 +13,9 @@ import base64
 from django.core.files.base import ContentFile
 import unidecode
 from datetime import datetime, timezone
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 #randomstring
 from django.utils.crypto import get_random_string
