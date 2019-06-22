@@ -123,7 +123,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIR = '/hackaton2019/parking/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'parking/static')
 
 MEDIA_URL = '/media/'
 
